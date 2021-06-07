@@ -1,5 +1,4 @@
 package io.github.isan95.masivtest.service;
-
 import io.github.isan95.masivtest.dao.RouletteDaoImpl;
 import io.github.isan95.masivtest.db.tables.daos.RouletteDao;
 import java.util.List;
@@ -9,7 +8,6 @@ import org.jooq.DSLContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 import io.github.isan95.masivtest.db.tables.pojos.Roulette;
-
 @Service
 public class RouletteServiceImpl implements RouletteService{
 	private final static Double WINBYNUMBER = 5.0;

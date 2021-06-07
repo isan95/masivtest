@@ -16,8 +16,7 @@ public class RouletteDaoImpl implements RouletteDao{
 		this.context = context;
 	}
 	@Override
-	public Roulette insert() {
-	
+	public Roulette insert() {	
 		return context.insertInto(ROULETTE).columns(ROULETTE.STATE)
 				.values("Cerrada").returning().fetchOne().into(Roulette.class);		
 	}
@@ -25,5 +24,4 @@ public class RouletteDaoImpl implements RouletteDao{
 	public List<Roulette> findAll() {
 		return context.select(ROULETTE.ID, (ROULETTE.STATE).as("Estado")).from(ROULETTE).fetch().into(Roulette.class);
 	}
-
 }
