@@ -53,23 +53,22 @@ public class RouletteServiceImpl implements RouletteService{
 		String winningNumber = calculateWinningNumber();
 		if(isNumeric(roulette.getBetNumberOrColor())) {
 			if(roulette.getBetNumberOrColor().equals(winningNumber)) {
-				roulette.setWinningNumberOrColor(winningNumber);
 				roulette.setEarnedMoney(roulette.getBetAmount()*WINBYNUMBER);
-				roulette.setState("Cerrada");
-				rouletteDao.update(roulette);
-				return true;
 			}
+			roulette.setWinningNumberOrColor(winningNumber);
+			roulette.setState("Cerrada");
+			rouletteDao.update(roulette);
+			return true;
 		}
 		else {
 			if(determinateWinningColor(winningNumber).equals(roulette.getBetNumberOrColor())) {
-				roulette.setWinningNumberOrColor(determinateWinningColor(winningNumber));
-				roulette.setEarnedMoney(roulette.getBetAmount()*WINBYCOLOR);
-				roulette.setState("Cerrada");
-				rouletteDao.update(roulette);
-				return true;
+				roulette.setEarnedMoney(roulette.getBetAmount()*WINBYCOLOR);				
 			}
+			roulette.setWinningNumberOrColor(determinateWinningColor(winningNumber));
+			roulette.setState("Cerrada");
+			rouletteDao.update(roulette);
+			return true;
 		}
-		return false;
 	}
 	private String determinateWinningColor(String winningNumber) {
 		Integer intWinningNumber = Integer.parseInt(winningNumber);
